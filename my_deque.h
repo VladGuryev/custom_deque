@@ -46,20 +46,10 @@ public:
   }
 
   T& At(size_t index){
-   // std::cout << "T& At(size_t index)" << std::endl;
-    try {
-      if(index >= Size())
-        throw std::out_of_range{"index out of range"};
-      else{
-        return this->operator[](index);
-      }
-    } catch (std::out_of_range& i) {
-        std::cerr<< i.what() << std::endl;
-    }
+    return const_cast<T&>(static_cast<const MyDeque&>(*this).At(index));
   }
 
   const T& At(size_t index) const{
-   // std::cout << "const T& At(size_t index)" << std::endl;
     try {
      if(index >= Size())
        throw std::out_of_range{"index out of range"};
@@ -72,18 +62,10 @@ public:
   }
 
   T& operator[](size_t index) {
- //   std::cout << "T& operator[]" << std::endl;
-    if(front_vec.size() != 0 && index <= front_vec.size() - 1){
-      return front_vec[front_vec.size() - 1 - index];
-    } else {
-      size_t index_for_back_vec = front_vec.size() != 0 ? index %
-                                                          front_vec.size() : index;
-      return back_vec[index_for_back_vec];
-    }
+    return const_cast<T&>(static_cast<const MyDeque&>(*this)[index]);
   }
 
   const T& operator[](size_t index) const {
-  //  std::cout << "const T& operator[]" << std::endl;
     if(front_vec.size() != 0 && index <= front_vec.size() - 1){
       return front_vec[front_vec.size() - 1 - index];
     } else {

@@ -103,6 +103,8 @@ void Test5(){
   ASSERT_EQUAL(const_deq2[1], 37);
   ASSERT_EQUAL(const_deq2.At(2), 55);
   ASSERT_EQUAL(const_deq2[4], 1017);
+  ASSERT_EQUAL(const_deq2.Front(), 24);
+  ASSERT_EQUAL(const_deq2.Back(), 1017);
 }
 
 #endif // TESTS_H
